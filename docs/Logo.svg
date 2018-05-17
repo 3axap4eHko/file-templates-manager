@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<circle fill="#F0DC4F" cx="256" cy="256" r="250"/>
+<path display="none" fill="#F0DC4F" d="M472,512H40c-22,0-40-18-40-40V40C0,18,18,0,40,0h432c22,0,40,18,40,40v432
+	C512,494,494,512,472,512z"/>
+<g>
+	
+		<image overflow="visible" opacity="0.75" width="2034" height="1214" xlink:href="A89330E.png"  transform="matrix(0.24 0 0 0.24 18.84 137.16)">
+	</image>
+	<g>
+		<g>
+			<path fill="#323330" d="M27,274v-30.6l138-53v36.3L112.3,244l-40.6,14.1v1.2l40.6,14.1l52.7,17.3v36.3L27,274z"/>
+			<path fill="#323330" d="M299.5,145.3h28.8l-60.4,261h-28.8L299.5,145.3z"/>
+			<path fill="#323330" d="M347,290.8l52.7-17.3l40.6-14.1v-1.2L399.7,244L347,226.7v-36.3l138,53V274l-138,53V290.8z"/>
+		</g>
+	</g>
+</g>
+</svg>

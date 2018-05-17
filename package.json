@@ -1,0 +1,194 @@
+{
+  "name": "file-templates-manager",
+  "displayName": "File Templates Manager",
+  "description": "File Templates Manager helps manage file templates",
+  "version": "0.1.0",
+  "publisher": "Ivan Zakharchanka",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.22.0"
+  },
+  "categories": ["Snippets", "Other"],
+  "keywords": ["templates", "code generator"],
+  "badges": [],
+  "icon": "docs/Logo128.png",
+  "activationEvents": ["*"],
+  "main": "./src/extension",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Code Templates configuration",
+      "properties": {
+        "templates.showExplorer": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show or hide the Explorer."
+        },
+        "templates.customVars": {
+          "type": "object",
+          "default": {},
+          "description": "Custom template variables."
+        }
+      }
+    },
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "templates.showDialog",
+          "group": "navigation"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "templates.create",
+          "when": "view == fileExplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "templates.create",
+          "when": "view == templatesExplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "templates.refresh",
+          "when": "view == templatesExplorer",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "templates.create",
+          "when": "view == templatesExplorer"
+        },
+        {
+          "command": "templates.rename",
+          "when": "view == templatesExplorer",
+          "group": "inline@1"
+        },
+        {
+          "command": "templates.edit",
+          "when": "view == templatesExplorer",
+          "group": "inline@2"
+        },
+        {
+          "command": "templates.clone",
+          "when": "view == templatesExplorer",
+          "group": "inline@3"
+        },
+        {
+          "command": "templates.delete",
+          "when": "view == templatesExplorer",
+          "group": "inline@4"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "templates.showDialog",
+        "title": "New File From Template...",
+        "description": "Displays template dialog",
+        "category": "Templates"
+      },
+      {
+        "command": "templates.create",
+        "title": "Create",
+        "description": "Creates new template",
+        "category": "Templates",
+        "icon": {
+          "light": "images/light/create.svg",
+          "dark": "images/dark/create.svg"
+        }
+      },
+      {
+        "command": "templates.clone",
+        "title": "Clone",
+        "description": "Clone template",
+        "category": "Templates",
+        "icon": {
+          "light": "images/light/clone.svg",
+          "dark": "images/dark/clone.svg"
+        }
+      },
+      {
+        "command": "templates.edit",
+        "title": "Edit",
+        "description": "Edit template",
+        "category": "Templates",
+        "icon": {
+          "light": "images/light/edit.svg",
+          "dark": "images/dark/edit.svg"
+        }
+      },
+      {
+        "command": "templates.rename",
+        "title": "Rename",
+        "description": "Rename template",
+        "category": "Templates",
+        "icon": {
+          "light": "images/light/rename.svg",
+          "dark": "images/dark/rename.svg"
+        }
+      },
+      {
+        "command": "templates.delete",
+        "title": "Delete",
+        "description": "Delete template",
+        "category": "Templates",
+        "icon": {
+          "light": "images/light/delete.svg",
+          "dark": "images/dark/delete.svg"
+        }
+      },
+      {
+        "command": "templates.refresh",
+        "title": "Refresh",
+        "description": "Refreshes templates list",
+        "category": "Templates",
+        "icon": {
+          "light": "images/light/refresh.svg",
+          "dark": "images/dark/refresh.svg"
+        }
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "templatesView",
+          "title": "Code Templates",
+          "icon": "images/dark/template.svg"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "templatesExplorer",
+          "name": "Templates",
+          "when": "config.templates.showExplorer == true"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "templates.showDialog",
+        "key": "Ctrl+Alt+N",
+        "mac": "Cmd+Alt+N"
+      }
+    ]
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6",
+    "eslint": "^4.11.0",
+    "@types/node": "^7.0.43",
+    "@types/mocha": "^2.2.42"
+  },
+  "dependencies": {
+    "dot": "^1.1.2",
+    "mkdirp": "^0.5.1"
+  }
+}
