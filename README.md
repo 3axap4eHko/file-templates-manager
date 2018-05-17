@@ -1,14 +1,15 @@
 # File Templates Manager for VSCode
 
 This extension allows to manage your file templates and create files from them.
-
-![Explorer][explorer]
+![Screen Cast][screen-cast]
 
 ## Features
 
 File Template Manager is powerful extension with following features that improve your productivity and do routine work for you.
 
 ### Manage file template
+
+![Explorer][explorer]
 
 ![Template Picker][template-picker]
 
@@ -111,7 +112,7 @@ This extension contributes the following settings:
 
 Initial release of Code Templates
 
-[logo]: docs/Logo128.png 'File Templates Manager'
-[explorer]: docs/explorer.png 'File Templates Manager Explorer'
-[template-picker]: docs/template-picker.png 'File Templates Manager Picker'
-[type-selector]: docs/select-type.png 'File Templates Manager Selector'
+[screen-cast]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/screen-cast.png 'File Templates Manager Screen Cast'
+[explorer]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/explorer.png 'File Templates Manager Explorer'
+[template-picker]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/template-picker.png 'File Templates Manager Picker'
+[type-selector]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/select-type.png 'File Templates Manager Selector'

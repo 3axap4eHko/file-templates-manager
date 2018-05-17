@@ -3,7 +3,16 @@
   "displayName": "File Templates Manager",
   "description": "File Templates Manager helps manage file templates",
   "version": "0.1.0",
-  "publisher": "Ivan Zakharchanka",
+  "publisher": "pro-js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3axap4eHko/file-templates-manager.git"
+  },
+  "author": "Ivan Zakharchanka",
+  "bugs": {
+    "url": "https://github.com/3axap4eHko/file-templates-manager/issues"
+  },
+  "homepage": "https://github.com/3axap4eHko/file-templates-manager#readme",
   "license": "MIT",
   "engines": {
     "vscode": "^1.22.0"
