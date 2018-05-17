@@ -112,7 +112,7 @@ This extension contributes the following settings:
 
 Initial release of Code Templates
 
-[screen-cast]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/screen-cast.png 'File Templates Manager Screen Cast'
+[screen-cast]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/screen-cast.gif 'File Templates Manager Screen Cast'
 [explorer]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/explorer.png 'File Templates Manager Explorer'
 [template-picker]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/template-picker.png 'File Templates Manager Picker'
 [type-selector]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/select-type.png 'File Templates Manager Selector'
