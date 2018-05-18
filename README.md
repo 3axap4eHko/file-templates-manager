@@ -110,10 +110,6 @@ This extension contributes the following settings:
 * `templates.showExplorer`: show/hide templates explorer
 * `templates.customVars`: you can define custom variables like AUTHOR, LICENSE, PROJECT and etc
 
-### 0.1.0
-
-Initial release of Code Templates
-
 [screen-cast]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/screen-cast.gif 'File Templates Manager Screen Cast'
 [explorer]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/explorer.png 'File Templates Manager Explorer'
 [template-picker]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/template-picker.png 'File Templates Manager Picker'
