@@ -1,6 +1,7 @@
 # File Templates Manager for VSCode
 
 File Templates Manager for VSCode allows you to manage your file templates and generate files from them.
+
 ![Screen Cast][screen-cast]
 
 ## Features
