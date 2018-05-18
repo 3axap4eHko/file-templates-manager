@@ -1,6 +1,6 @@
 # File Templates Manager for VSCode
 
-This extension allows to manage your file templates and create files from them.
+File Templates Manager for VSCode allows you to manage your file templates and generate files from them.
 ![Screen Cast][screen-cast]
 
 ## Features
@@ -13,7 +13,7 @@ File Template Manager is powerful extension with following features that improve
 
 ![Template Picker][template-picker]
 
-### Interactive integrated template engine
+### Interactive integrated `doT` template engine
 
 * `{{ }}` - evaluation
 * `{{= }}` - interpolation
@@ -22,6 +22,8 @@ File Template Manager is powerful extension with following features that improve
 * `{{## #}}` - compile-time defines
 * `{{? }}` - conditionals
 * `{{~ }}` - array iteration
+
+[Full Documentation](http://olado.github.io/doT/index.html) of `doT` template engine
 
 ---
 
@@ -74,10 +76,10 @@ and get result for `class` type
 using System;
 
 /*
-  CSharp class 
+  CSharp class
  */
 public class CSharp {
-  
+
 }
 ```
 
@@ -105,8 +107,8 @@ public class CSharp {
 
 This extension contributes the following settings:
 
-* `templates.showExplorer`: enable/disable explorer
-* `templates.customVars`: define custom variables
+* `templates.showExplorer`: show/hide templates explorer
+* `templates.customVars`: you can define custom variables like AUTHOR, LICENSE, PROJECT and etc
 
 ### 0.1.0
 
