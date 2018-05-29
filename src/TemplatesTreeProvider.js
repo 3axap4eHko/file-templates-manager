@@ -123,33 +123,36 @@ module.exports = function(templatesManager) {
           const iterator = variables[Symbol.iterator]();
           let item = iterator.next();
           while (!item.done) {
-            const name = item.value.toUpperCase();
-            const interactive = interactives[name];
+            const key = item.value.toUpperCase();
+            const interactive = interactives[key];
             switch (interactive.type) {
               case 'confirm':
                 {
-                  const value = await confirm(interactives[name].message);
-                  params[name] = value;
+                  const value = await confirm(interactives[key].message);
+                  params[key] = value;
                 }
                 break;
               case 'prompt':
                 {
-                  const value = await promptValue(interactives[name].message);
-                  params[name] = value;
+                  const value = await promptValue(interactives[key].message);
+                  params[key] = value;
                 }
                 break;
               case 'select':
                 {
-                  const value = await selectValue(interactives[name].message, interactives[name].items);
-                  params[name] = value;
+                  const value = await selectValue(interactives[key].message, interactives[key].items);
+                  params[key] = value;
                 }
                 break;
+            }
+            if (!params[key]) {
+              return vscode.window.showErrorMessage(`${name} creation interrupted`);
             }
             item = iterator.next();
           }
           console.log(params);
           await writeFile(filename, compiled(params));
-          openFile(filename);
+          return openFile(filename);
         }
       }
     },
