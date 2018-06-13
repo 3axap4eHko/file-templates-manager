@@ -2,7 +2,7 @@
     "name": "file-templates-manager",
     "displayName": "File Templates Manager",
     "description": "File Templates Manager helps manage file templates",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "publisher": "3axap4eHko",
     "repository": {
         "type": "git",
