@@ -55,7 +55,7 @@ module.exports = function(templatesManager) {
         },
         ...templatesManager.templates.map(({ name }) => ({
           label: name,
-          path: uri ? uri.path : templatesManager.rootPath,
+          path: uri ? uri.fsPath : templatesManager.rootPath,
           command: 'templates.createFile',
         })),
       ];
