@@ -1,5 +1,4 @@
 const doT = require('doT');
-const { Uri } = require('vscode');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');

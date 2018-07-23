@@ -1,7 +1,7 @@
 const vscode = require('vscode');
 const os = require('os');
 const { join, dirname, basename, extname } = require('path');
-const { writeFile, exists, isDir, interpolate, compile } = require('./utils');
+const { writeFile, exists, isDir, compile } = require('./utils');
 
 async function openFile(filename) {
   const uri = vscode.Uri.file(filename);
