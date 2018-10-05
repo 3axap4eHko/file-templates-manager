@@ -27,6 +27,15 @@ File Template Manager is powerful extension with following features that improve
 [Full Documentation](http://olado.github.io/doT/index.html) of `doT` template engine
 
 ---
+Variables available by default
+
+  - `DIR` - directory of created file
+  - `NAME` - name from input prompt
+  - `FILE` - `NAME` + template extension
+  - `FILE_PATH` - `DIR` + `FILE`
+  - `USER` - name of user
+  - `DATE` - date of file creation
+---
 
 Evaluation and interpolation example for `HTML` file
 
