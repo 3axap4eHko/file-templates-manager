@@ -1,4 +1,4 @@
-const doT = require('doT');
+const doT = require('dot');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
