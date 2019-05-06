@@ -2,7 +2,7 @@
     "name": "file-templates-manager",
     "displayName": "File Templates Manager",
     "description": "File Templates Manager helps manage file templates",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "publisher": "3axap4eHko",
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
