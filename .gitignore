@@ -1,6 +1,8 @@
+/build
+/node_modules
+.vscode-test/
+.idea/
 .secret
 .DS_Store
-.idea
-.vscode-test/
-node_modules
 *.vsix
+*.log*

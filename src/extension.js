@@ -15,7 +15,7 @@ function log(callback) {
   };
 }
 
-async function activate(context) {
+async function activate() {
   const templatesManager = await createTemplatesManager();
   const templatesTreeProvider = await createTemplatesTreeProvider(templatesManager);
 

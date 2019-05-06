@@ -1,8 +1,9 @@
+/docs
+/src
+/test
 .vscode/**
 .vscode-test/**
 .gitignore
 .eslintrc.json
 .secret
-docs/
-test/**
 jsconfig.json

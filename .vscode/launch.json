@@ -1,14 +1,21 @@
 {
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "Extension",
-			"type": "extensionHost",
-			"request": "launch",
-			"runtimeExecutable": "${execPath}",
-			"args": [
-				"--extensionDevelopmentPath=${workspaceRoot}"
-			],
-		}
-	]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceRoot}",
+        "--extensionTestsPath=${workspaceRoot}/test"
+      ],
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "smartStep": true,
+      "skipFiles": [
+        "<node_internals>/**/*.js"
+      ]
+    }
+  ]
 }

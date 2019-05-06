@@ -2,6 +2,8 @@
 
 File Templates Manager for VSCode allows you to manage your file templates and generate files from them.
 
+:heart: Like it? :coffee: [![Donate][donate-image]][donate-url] 
+
 ![Screen Cast][screen-cast]
 
 ## Features
@@ -97,7 +99,7 @@ public class CSharp {
 
 `tsconfig.json` example file
 
-```json
+```js
 {{#def.select('MODULE', 'Specify module code generation', ['none','commonjs','amd','system','umd','es6','es2015','esnext'])}}
 {{#def.select('TARGET', 'Specify ECMAScript target version', ['es3','es6','es2016','es2017','esnext'])}}
 {{#def.confirm('SOURCE_MAP', 'Should generate corresponding .map file?')}}
@@ -120,7 +122,14 @@ This extension contributes the following settings:
 * `templates.showExplorer`: show/hide templates explorer
 * `templates.customVars`: you can define custom variables like AUTHOR, LICENSE, PROJECT and etc
 
+## License
+[The MIT License](http://opensource.org/licenses/MIT)
+Copyright (c) 2019 Ivan Zakharchanka
+
 [screen-cast]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/screen-cast.gif 'File Templates Manager Screen Cast'
 [explorer]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/explorer.png 'File Templates Manager Explorer'
 [template-picker]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/template-picker.png 'File Templates Manager Picker'
 [type-selector]: https://github.com/3axap4eHko/file-templates-manager/raw/master/docs/select-type.png 'File Templates Manager Selector'
+
+[donate-image]: https://img.shields.io/badge/Donate-PayPal-green.svg 'PayPal Donate'
+[donate-url]: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LJWEQTUUZ977C&lc=US&item_name=file-templates-manager&currency_code=USD
