@@ -15,8 +15,9 @@ function log(callback) {
   };
 }
 
-async function activate() {
-  const templatesManager = await createTemplatesManager();
+async function activate({ globalStoragePath }) {
+  console.log('CONTEXT', globalStoragePath);
+  const templatesManager = await createTemplatesManager(globalStoragePath);
   const templatesTreeProvider = await createTemplatesTreeProvider(templatesManager);
 
   vscode.window.registerTreeDataProvider('templatesExplorer', templatesTreeProvider);

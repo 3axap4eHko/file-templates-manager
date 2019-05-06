@@ -32,8 +32,7 @@ async function selectValue(placeHolder, items) {
   });
 }
 
-module.exports = function(templatesManager) {
-  const listeners = [];
+module.exports = function (templatesManager) {
 
   return {
     onDidChangeTreeData: listener => templatesManager.onDidChange(listener),
@@ -126,23 +125,20 @@ module.exports = function(templatesManager) {
             const key = item.value.toUpperCase();
             const interactive = interactives[key];
             switch (interactive.type) {
-              case 'confirm':
-                {
-                  const value = await confirm(interactives[key].message);
-                  params[key] = value;
-                }
+              case 'confirm': {
+                const value = await confirm(interactives[key].message);
+                params[key] = value;
+              }
                 break;
-              case 'prompt':
-                {
-                  const value = await promptValue(interactives[key].message);
-                  params[key] = value;
-                }
+              case 'prompt': {
+                const value = await promptValue(interactives[key].message);
+                params[key] = value;
+              }
                 break;
-              case 'select':
-                {
-                  const value = await selectValue(interactives[key].message, interactives[key].items);
-                  params[key] = value;
-                }
+              case 'select': {
+                const value = await selectValue(interactives[key].message, interactives[key].items);
+                params[key] = value;
+              }
                 break;
             }
             if (!params[key]) {

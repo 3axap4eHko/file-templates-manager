@@ -17,6 +17,7 @@ function promisify(method, bindTo = null) {
       method.apply(bindTo, args);
     });
 }
+
 function falseCatch(fn) {
   return (...args) =>
     fn(...args)
@@ -24,7 +25,7 @@ function falseCatch(fn) {
       .catch(() => false);
 }
 
-exports.copy = function(fromFilename, toDir) {
+exports.copy = function (fromFilename, toDir) {
   const toFilename = path.join(toDir, path.basename(fromFilename));
   return new Promise((resolve, reject) => {
     const rs = fs.createReadStream(fromFilename);
@@ -79,11 +80,11 @@ const dotSettings = {
   selfcontained: false,
 };
 
-exports.compile = function(content, context) {
+exports.compile = function (content, context) {
   return doT.template(content, dotSettings, context);
 };
 
-exports.interpolate = function(content, params, context) {
+exports.interpolate = function (content, params, context) {
   const template = doT.template(content, dotSettings, context);
   return template(params);
 };

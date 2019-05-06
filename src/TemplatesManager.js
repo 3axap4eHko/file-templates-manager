@@ -2,25 +2,26 @@ const vscode = require('vscode');
 const { join } = require('path');
 const { TEMPLATES_DIR, readDir, readFile, writeFile, mkdir, exists, rename, unlink, copy } = require('./utils');
 
-function getFilename(name) {
-  return join(TEMPLATES_DIR, name);
-}
+module.exports = async function createTemplatesManager(templatesDir) {
+  function getFilename(name) {
+    return join(templatesDir, name);
+  }
 
-module.exports = async function createTemplatesManager() {
-  if (!(await exists(TEMPLATES_DIR))) {
-    await mkdir(TEMPLATES_DIR);
-    const builtInTemplatesDir = `${__dirname}/../templates`;
+  if (!(await exists(templatesDir))) {
+    await mkdir(templatesDir);
+    const builtInTemplatesDir = await exists(TEMPLATES_DIR) ? TEMPLATES_DIR : `${__dirname}/../templates`;
     const builtInTemplates = await readDir(builtInTemplatesDir);
     await Promise.all(
-      builtInTemplates.map(builtInTemplate => copy(join(builtInTemplatesDir, builtInTemplate), TEMPLATES_DIR)),
+      builtInTemplates.map(builtInTemplate => copy(join(builtInTemplatesDir, builtInTemplate), templatesDir)),
     );
   }
   const templates = [];
   const onChange = [];
+
   async function update() {
-    const filenames = await readDir(TEMPLATES_DIR);
+    const filenames = await readDir(templatesDir);
     const append = await Promise.all(
-      filenames.map(async (name, id) => ({
+      filenames.map(async (name) => ({
         name,
         code: await readFile(getFilename(name), 'utf8'),
       })),
@@ -28,6 +29,7 @@ module.exports = async function createTemplatesManager() {
     templates.splice(0, templates.length, ...append);
     onChange.forEach(listener => listener());
   }
+
   await update();
 
   return {
