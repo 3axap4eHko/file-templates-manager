@@ -75,6 +75,7 @@ module.exports = function (templatesManager) {
       if (name) {
         const template = await templatesManager.get(label);
         const dir = (await isDir(path)) ? path : dirname(path);
+        const dirName = basename(dir);
         const filename = join(dir, `${name}${extension}`);
 
         const isExists = await exists(filename);
@@ -82,6 +83,7 @@ module.exports = function (templatesManager) {
           const params = Object.assign(
             {
               DIR: dir,
+              DIRNAME: dirName,
               FILE: `${name}${extension}`,
               FILE_PATH: filename,
               USER: os.userInfo().username,
