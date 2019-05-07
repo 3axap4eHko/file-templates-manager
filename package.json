@@ -6,7 +6,8 @@
     "publisher": "3axap4eHko",
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
+        "test": "node ./node_modules/vscode/bin/test",
+        "lint": "eslint ./src"
     },
     "repository": {
         "type": "git",

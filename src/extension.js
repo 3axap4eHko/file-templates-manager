@@ -6,11 +6,11 @@ function log(callback) {
   return async (...args) => {
     try {
       if (callback.name) {
-        console.log(`Call ${callback.name}`);
+        console.log(`Call ${callback.name}`); //eslint-disable-line no-console
       }
       return await callback(...args);
     } catch (e) {
-      console.error(e);
+      console.error(e); //eslint-disable-line no-console
     }
   };
 }

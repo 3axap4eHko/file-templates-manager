@@ -148,7 +148,7 @@ module.exports = function (templatesManager) {
             }
             item = iterator.next();
           }
-          console.log(params);
+
           await writeFile(filename, compiled(params));
           return openFile(filename);
         }
@@ -161,7 +161,7 @@ module.exports = function (templatesManager) {
       });
       if (input) {
         const isExists = await templatesManager.has(input);
-        if (!isExists || (await confirm(`Replace existing template "${item.label}"?`))) {
+        if (!isExists || (await confirm(`Replace existing template "${input}"?`))) {
           await templatesManager.set(input, '');
           const filename = templatesManager.getFilename(input);
           await openFile(filename);
