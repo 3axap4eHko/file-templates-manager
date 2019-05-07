@@ -16,7 +16,6 @@ function log(callback) {
 }
 
 async function activate({ globalStoragePath }) {
-  console.log('CONTEXT', globalStoragePath);
   const templatesManager = await createTemplatesManager(globalStoragePath);
   const templatesTreeProvider = await createTemplatesTreeProvider(templatesManager);
 
