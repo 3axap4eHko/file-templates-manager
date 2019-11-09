@@ -2,7 +2,7 @@
     "name": "file-templates-manager",
     "displayName": "File Templates Manager",
     "description": "File Templates Manager helps manage file templates",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "publisher": "3axap4eHko",
     "main": "./build/extension.js",
     "scripts": {
