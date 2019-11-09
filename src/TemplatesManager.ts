@@ -25,14 +25,14 @@ export interface TemplatesManager<T> {
   onDidChange: vscode.EventEmitter<T>,
 }
 
-export default async function createTemplatesManager<T>(templatesDir: string): Promise<TemplatesManager<T>> {
+export default async function createTemplatesManager<T>(extensionPath: string, templatesDir: string): Promise<TemplatesManager<T>> {
   function getFilename(name: string) {
     return join(templatesDir, name);
   }
 
   if (!(await exists(templatesDir))) {
     await mkdir(templatesDir);
-    const builtInTemplatesDir = await exists(TEMPLATES_DIR) ? TEMPLATES_DIR : `${__dirname}/../templates`;
+    const builtInTemplatesDir = await exists(TEMPLATES_DIR) ? TEMPLATES_DIR : join(extensionPath, 'templates');
     const builtInTemplates: string[] = await readDir(builtInTemplatesDir);
     await Promise.all(
       builtInTemplates.map(builtInTemplate => copy(join(builtInTemplatesDir, builtInTemplate), templatesDir)),
@@ -55,11 +55,9 @@ export default async function createTemplatesManager<T>(templatesDir: string): P
 
   await update();
 
-
-
   return {
     get workspacePath() {
-      return vscode.workspace.workspaceFolders?.[0]?.uri?.path;
+      return vscode.workspace.workspaceFolders?.[0]?.uri?.fsPath;
     },
     get config() {
       return vscode.workspace.getConfiguration('templates');
