@@ -1,9 +1,9 @@
-const vscode = require('vscode');
-const createTemplatesManager = require('./TemplatesManager');
-const createTemplatesTreeProvider = require('./TemplatesTreeProvider');
+import vscode, { ExtensionContext } from 'vscode';
+import createTemplatesManager from './TemplatesManager';
+import createTemplatesTreeProvider from './TemplatesTreeProvider';
 
-function log(callback) {
-  return async (...args) => {
+function log(callback: Function) {
+  return async (...args: any[]) => {
     try {
       if (callback.name) {
         console.log(`Call ${callback.name}`); //eslint-disable-line no-console
@@ -15,7 +15,7 @@ function log(callback) {
   };
 }
 
-async function activate({ globalStoragePath }) {
+export async function activate({ globalStoragePath }: ExtensionContext) {
   const templatesManager = await createTemplatesManager(globalStoragePath);
   const templatesTreeProvider = await createTemplatesTreeProvider(templatesManager);
 
@@ -30,7 +30,5 @@ async function activate({ globalStoragePath }) {
   vscode.commands.registerCommand('templates.delete', log(templatesTreeProvider.delete));
   vscode.commands.registerCommand('templates.refresh', log(templatesTreeProvider.refresh));
 }
-exports.activate = activate;
 
-function deactivate() {}
-exports.deactivate = deactivate;
+export function deactivate() { }

@@ -1,9 +1,10 @@
-const vscode = require('vscode');
-const os = require('os');
-const { join, dirname, basename, extname } = require('path');
-const { writeFile, exists, isDir, compile } = require('./utils');
+import vscode, { TreeDataProvider, Event, ProviderResult, Uri } from 'vscode';
+import os from 'os';
+import { join, dirname, basename, extname } from 'path';
+import { TemplatesManager, Template } from './TemplatesManager';
+import { writeFile, exists, isDir, compile } from './utils';
 
-async function openFile(filename) {
+async function openFile(filename: string) {
   const uri = vscode.Uri.file(filename);
   const document = await vscode.workspace.openTextDocument(uri);
   if (document) {
@@ -14,38 +15,56 @@ async function openFile(filename) {
 const PROMPT_YES = 'Yes';
 const PROMPT_NO = 'No';
 
-async function confirm(question, modal = true) {
+async function confirm(question: string, modal = true) {
   const result = await vscode.window.showWarningMessage(question, { modal }, PROMPT_NO, PROMPT_YES);
   return result === PROMPT_YES;
 }
 
-async function promptValue(prompt) {
+async function promptValue(prompt: string) {
   return vscode.window.showInputBox({
     placeHolder: 'Value',
     prompt,
   });
 }
 
-async function selectValue(placeHolder, items) {
+async function selectValue(placeHolder: string, items: string[]) {
   return vscode.window.showQuickPick(items, {
     placeHolder,
   });
 }
 
-module.exports = function (templatesManager) {
+export interface Interactive {
+  type: string;
+  message: string;
+  items?: string[];
+}
 
+export interface TemplatesTreeProvider<T> extends TreeDataProvider<T> {
+  showDialog(uri: Uri): Promise<void>;
+  createFile(template: Template): Promise<string | void>;
+  create(): Promise<void>;
+  clone(item: Template): Promise<void>;
+  edit(item: Template): Promise<void>;
+  rename(item: Template): Promise<void>;
+  delete(item: Template): Promise<void>;
+  refresh(): Promise<void>;
+}
+
+export default async function createTemplatesTreeProvider(templatesManager: TemplatesManager<Template>): Promise<TemplatesTreeProvider<Template>> {
   return {
-    onDidChangeTreeData: listener => templatesManager.onDidChange(listener),
+    get onDidChangeTreeData(): Event<Template> {
+      return templatesManager.onDidChange.event;
+    },
     getTreeItem: element => element,
-    getChildren: element => {
+    getChildren: (element: Template): ProviderResult<Template[]> => {
       if (!element) {
-        return templatesManager.templates.map(({ name }) => ({
+        return templatesManager.templates.map<Template>(({ name }) => ({
           label: name,
           resourceUri: vscode.Uri.file(templatesManager.getFilename(name)),
         }));
       }
     },
-    showDialog: async uri => {
+    showDialog: async (uri) => {
       const items = [
         {
           label: 'Create...',
@@ -95,23 +114,23 @@ module.exports = function (templatesManager) {
             },
             templatesManager.config.customVars,
           );
-          const interactives = {};
+          const interactives: { [name: string]: Interactive } = {};
           const compiled = compile(template, {
-            confirm(name, message) {
+            confirm(name: string, message: string) {
               interactives[name] = {
                 type: 'confirm',
                 message,
               };
               return '';
             },
-            prompt(name, message) {
+            prompt(name: string, message: string) {
               interactives[name] = {
                 type: 'prompt',
                 message,
               };
               return '';
             },
-            select(name, message, items) {
+            select(name: string, message: string, items: string[]) {
               interactives[name] = {
                 type: 'select',
                 message,
