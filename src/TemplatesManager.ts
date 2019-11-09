@@ -11,7 +11,7 @@ export interface Template {
 }
 
 export interface TemplatesManager<T> {
-  rootPath: string;
+  workspacePath: string;
   config: WorkspaceConfiguration,
   templates: Template[],
   getFilename(name: string): string,
@@ -58,8 +58,8 @@ export default async function createTemplatesManager<T>(templatesDir: string): P
 
 
   return {
-    get rootPath() {
-      return vscode.workspace.workspaceFolders?.[0]?.uri?.toString();
+    get workspacePath() {
+      return vscode.workspace.workspaceFolders?.[0]?.uri?.path;
     },
     get config() {
       return vscode.workspace.getConfiguration('templates');

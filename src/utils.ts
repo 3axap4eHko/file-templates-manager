@@ -27,10 +27,10 @@ export const copy = function (fromFilename: string, toDir: string) {
 };
 
 export const stat = promisify(fs.stat.bind(fs));
-export const isFile = (path: string) => exports.stat(path).then((stats: Stats) => stats.isFile());
-export const isDir = (path: string) => exports.stat(path).then((stats: Stats) => stats.isDirectory());
+export const isFile = (path: string) => stat(path).then((stats: Stats) => stats.isFile());
+export const isDir = (path: string) => stat(path).then((stats: Stats) => stats.isDirectory());
 export const access = promisify(fs.access.bind(fs));
-export const exists = falseCatch((path: string) => exports.access(path, fs.constants.F_OK));
+export const exists = falseCatch((path: string) => access(path, fs.constants.F_OK));
 export const readDir = promisify(fs.readdir.bind(fs));
 export const readFile = promisify(fs.readFile.bind(fs));
 export const writeFile = promisify(fs.writeFile.bind(fs));

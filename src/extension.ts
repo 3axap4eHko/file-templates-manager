@@ -10,7 +10,7 @@ function log(callback: Function) {
       }
       return await callback(...args);
     } catch (e) {
-      console.error(e); //eslint-disable-line no-console
+      console.error(e.stack); //eslint-disable-line no-console
     }
   };
 }

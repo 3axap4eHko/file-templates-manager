@@ -73,7 +73,7 @@ export default async function createTemplatesTreeProvider(templatesManager: Temp
         },
         ...templatesManager.templates.map(({ name }) => ({
           label: name,
-          path: uri ? uri.fsPath : templatesManager.rootPath,
+          path: uri ? uri.fsPath : templatesManager.workspacePath,
           command: 'templates.createFile',
         })),
       ];
