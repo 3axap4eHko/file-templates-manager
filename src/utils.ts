@@ -54,15 +54,15 @@ function getOSAppDir() {
 export const TEMPLATES_DIR = path.join(getOSAppDir(), 'Code', 'User', 'CodeTemplates');
 
 const dotSettings: TemplateSettings = {
-  evaluate: /\{\{([\s\S]+?)\}\}\n?/g,
+  evaluate: /\{\{([\s\S]+?)\}\}/g,
   interpolate: /\{\{=([\s\S]+?)\}\}/g,
-  encode: /\{\{!([\s\S]+?)\}\}\n?/g,
-  use: /.*?\{\{#([\s\S]+?)\}\}\n?/g,
+  encode: /\{\{!([\s\S]+?)\}\}/g,
+  use: /\{\{#([\s\S]+?)\}\}(?: +(?=\r?\n)|\r?\n?)/g,
   useParams:   /(^|[^\w$])def(?:\.|\[[\'\"])([\w$\.]+)(?:[\'\"]\])?\s*\:\s*([\w$\.]+|\"[^\"]+\"|\'[^\']+\'|\{[^\}]+\})/g,
-  define: /.*?\{\{##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\}\}\n?/g,
+  define: /\{\{##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\}\}(?: +(?=\r?\n)|\r?\n?)/g,
   defineParams:/^\s*([\w$]+):([\s\S]+)/,
-  conditional: /\{\{\?(\?)?\s*([\s\S]*?)\s*\}\}\n?/g,
-  iterate: /\{\{~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\}\})\n?/g,
+  conditional: /\{\{\?(\?)?\s*([\s\S]*?)\s*\}\}(?: +(?=\r?\n)|\r?\n?)/g,
+  iterate: /\{\{~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\}\})(?: +(?=\r?\n)|\r?\n?)/g,
   varname: '$',
   strip: false,
   append: true,
