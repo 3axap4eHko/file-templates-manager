@@ -220,7 +220,7 @@
         "webpack-cli": "^3.3.10"
     },
     "dependencies": {
-        "dot": "^1.1.2",
+        "dot": "^1.1.3",
         "mkdirp": "^0.5.1"
     }
 }
